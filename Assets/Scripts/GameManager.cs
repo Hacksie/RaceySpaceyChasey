@@ -30,6 +30,8 @@ namespace HackedDesign
         [Header("State")]
         [SerializeField] private bool racing = false;
         [SerializeField] private float lapTimer = 0.0f;
+        [SerializeField] private int currentLap = 1;
+        [SerializeField] private int maxLaps = 3;
 
         private IState currentState = new EmptyState();
 
@@ -43,6 +45,9 @@ namespace HackedDesign
         public List<Ship> Ships { get { return shipPrefabs; } }
         public List<Color> AIColors { get { return aiColors; }}
         public bool Racing { get { return racing;} private set { racing = value; }}
+        public float LapTimer { get { return lapTimer; } private set { lapTimer = value; }}
+        public int CurrentLap { get { return currentLap; } private set { currentLap = value; }}
+        public int MaxLaps { get { return maxLaps;} private set { maxLaps = value;}}
 
         public IState CurrentState
         {
@@ -88,6 +93,8 @@ namespace HackedDesign
         {
             racing = false;
             lapTimer = 0.0f;
+            currentLap = 1;
+            maxLaps = 3;
             player?.Reset();
             ResetAI();
         }

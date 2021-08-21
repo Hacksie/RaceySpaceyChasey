@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilot: Bork
-  maxRacey: 1
+  maxRacey: 2
   maxSpacey: 1
-  maxChasey: 1
+  maxChasey: 2
   renderTexture: {fileID: 8400000, guid: 35ea4423478edf444bf5a47b06d44b33, type: 2}
-  acceleration: 10
-  decceleration: 2
+  acceleration: 9
+  decceleration: 1.5
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -16,6 +17,9 @@ namespace HackedDesign.UI
         [SerializeField] private List<UnityEngine.UI.Image> spaceyFull;
         [SerializeField] private List<UnityEngine.UI.Image> chaseyEmpty;
         [SerializeField] private List<UnityEngine.UI.Image> chaseyFull;
+        [SerializeField] private List<UnityEngine.UI.Text> leaderboard;
+        [SerializeField] private UnityEngine.UI.Text laptimerText;
+        [SerializeField] private UnityEngine.UI.Text lapText;
 
 
         public override void Repaint()
@@ -24,8 +28,25 @@ namespace HackedDesign.UI
             {
                 hudFace.texture = GameManager.Instance.Player.ship.renderTexture;
                 RepaintBars();
+                RepaintLeaderboard();
                 speed.text = GameManager.Instance.Player.currentSpeed.ToString("N0");
+                laptimerText.text = GameManager.Instance.LapTimer.ToString("N");
+                lapText.text = GameManager.Instance.CurrentLap.ToString("N0") + "/" + GameManager.Instance.MaxLaps.ToString("N0");
             }
+        }
+
+        // FIXME: This is nasty
+        private void RepaintLeaderboard()
+        {
+            //Debug.Log("Sort leaderboard");
+            List<AbstractController> ships = new List<AbstractController>(GameManager.Instance.AI);
+            ships.Add(GameManager.Instance.Player);
+            var ordered = ships.OrderByDescending(s => s.CurrentPosition).ToList();
+            for(int i = 0; i < ordered.Count(); i++)
+            {
+                leaderboard[i].text = i.ToString("N0") + "." + ordered[i].ship.pilot;
+            }
+            //= GameManager.Instance.AI.CopyTo
         }
 
         private void RepaintBars()

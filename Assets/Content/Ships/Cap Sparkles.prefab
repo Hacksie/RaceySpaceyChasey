@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilot: Cap Sparkles
-  maxRacey: 1
+  maxRacey: 2
   maxSpacey: 1
-  maxChasey: 1
+  maxChasey: 2
   renderTexture: {fileID: 8400000, guid: f78fc37fa4066894e9775f2926ba18e6, type: 2}
-  acceleration: 10
-  decceleration: 2
+  acceleration: 9.5
+  decceleration: 1.75
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

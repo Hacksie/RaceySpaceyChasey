@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilot: Robin Williams
-  maxRacey: 1
+  maxRacey: 2
   maxSpacey: 1
-  maxChasey: 1
+  maxChasey: 2
   renderTexture: {fileID: 8400000, guid: 0a924422104217a4a8269ccbb9cb3939, type: 2}
   acceleration: 10
   decceleration: 2

@@ -47,10 +47,10 @@ MonoBehaviour:
   pilot: Le General
   maxRacey: 1
   maxSpacey: 1
-  maxChasey: 1
+  maxChasey: 3
   renderTexture: {fileID: 8400000, guid: 3dc64de193b7da348bd942d7b42c3c24, type: 2}
-  acceleration: 10
-  decceleration: 2
+  acceleration: 7
+  decceleration: 0.5
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

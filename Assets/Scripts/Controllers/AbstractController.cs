@@ -17,6 +17,8 @@ namespace HackedDesign
         [Header("State")]
         [SerializeField] public Ship ship;
 
+        public float CurrentPosition { get { return dollyCart.m_Position; }}
+
         public void SetShip(Ship shipPrefab)
         {
             for(int i = 0; i<shipModelParent.transform.childCount; i++)

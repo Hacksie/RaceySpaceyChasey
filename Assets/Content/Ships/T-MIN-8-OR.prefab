@@ -47,10 +47,10 @@ MonoBehaviour:
   pilot: T-MIN-8-OR
   maxRacey: 1
   maxSpacey: 1
-  maxChasey: 1
+  maxChasey: 3
   renderTexture: {fileID: 8400000, guid: 920e5f60762f25341bba84e983a54b54, type: 2}
-  acceleration: 10
-  decceleration: 2
+  acceleration: 8.5
+  decceleration: 1.75
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

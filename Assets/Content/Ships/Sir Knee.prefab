@@ -47,10 +47,10 @@ MonoBehaviour:
   pilot: Sir Knee
   maxRacey: 1
   maxSpacey: 1
-  maxChasey: 1
+  maxChasey: 3
   renderTexture: {fileID: 8400000, guid: e8bd84ef1d12fc94080e277efcc4642f, type: 2}
-  acceleration: 10
-  decceleration: 2
+  acceleration: 8
+  decceleration: 1
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

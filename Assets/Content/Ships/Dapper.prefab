@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilot: Dapper
-  maxRacey: 1
+  maxRacey: 3
   maxSpacey: 1
   maxChasey: 1
   renderTexture: {fileID: 8400000, guid: 64153095139283e4ebab2a3cccdbaed5, type: 2}
-  acceleration: 10
-  decceleration: 2
+  acceleration: 11.5
+  decceleration: 2.75
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1
