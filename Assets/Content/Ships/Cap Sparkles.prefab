@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6823164703958733897}
   - component: {fileID: 3331867916963704137}
   m_Layer: 0
-  m_Name: Cap Sparkle
+  m_Name: Cap Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5ac3fbe43ffd4458bd67a9aafbc23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pilot: Cap Sparkles
   maxRacey: 1
   maxSpacey: 1
   maxChasey: 1
   renderTexture: {fileID: 8400000, guid: f78fc37fa4066894e9775f2926ba18e6, type: 2}
-  acceleration: 3
+  acceleration: 10
+  decceleration: 2
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

@@ -306,12 +306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5ac3fbe43ffd4458bd67a9aafbc23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRacey: 1
+  pilot: The Girl
+  maxRacey: 3
   maxSpacey: 1
   maxChasey: 1
   renderTexture: {fileID: 8400000, guid: ba01d8e83b6542d498ad3cafa0a3aa80, type: 2}
-  acceleration: 3
-  currentRacey: 1
+  acceleration: 10
+  decceleration: 2
+  currentRacey: 3
   currentSpacey: 1
   currentChasey: 1
   currentChaseyType: 

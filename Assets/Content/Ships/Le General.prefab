@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5ac3fbe43ffd4458bd67a9aafbc23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pilot: Le General
   maxRacey: 1
   maxSpacey: 1
   maxChasey: 1
   renderTexture: {fileID: 8400000, guid: 3dc64de193b7da348bd942d7b42c3c24, type: 2}
-  acceleration: 3
+  acceleration: 10
+  decceleration: 2
   currentRacey: 1
   currentSpacey: 1
   currentChasey: 1

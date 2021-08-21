@@ -24,7 +24,10 @@ namespace HackedDesign
 
         protected override void UpdateShipAcceleration()
         {
-            this.forwardSpeed = 10;
-        }        
+            if (ship)
+            {
+                this.currentSpeed += ship.acceleration * Time.deltaTime;
+            }
+        }    
     }
 }

@@ -5,13 +5,13 @@ namespace HackedDesign
 {
     public class PlayingState : IState
     {
-        private PlayerController player;
+        private AbstractController player;
         private UI.AbstractPresenter hudPresenter;
 
 
         public bool PlayerActionAllowed => true;
 
-        public PlayingState(PlayerController player, UI.AbstractPresenter hudPresenter)
+        public PlayingState(AbstractController player, UI.AbstractPresenter hudPresenter)
         {
             this.player = player;
             this.hudPresenter = hudPresenter;

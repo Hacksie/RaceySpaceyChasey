@@ -1,4 +1,6 @@
 #nullable enable
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace HackedDesign
@@ -9,17 +11,19 @@ namespace HackedDesign
 
         [Header("Game")]
         [SerializeField] private Camera? mainCamera = null;
-        [SerializeField] private PlayerController? player = null;
+        [SerializeField] private AbstractController? player = null;
         [SerializeField] private UnityEngine.Audio.AudioMixer? masterMixer = null;
         [SerializeField] private AudioSource? menuMusic = null;
         [SerializeField] private AudioSource? playMusic = null;
+        [SerializeField] private List<Ship> shipPrefabs = null;
+        [SerializeField] private List<AIController> ai = null;
 
         [Header("UI")]
-
         [SerializeField] private UI.HudPresenter? hudPanel = null;
         [SerializeField] private UI.MainMenuPresenter? mainMenuPanel = null;
         [SerializeField] private UI.CharSelectMenuPresenter? charSelectMenuPanel = null;
         [SerializeField] private UI.LevelSelectMenuPresenter? levelSelectMenuPanel = null;
+        [SerializeField] private UI.PauseMenuPresenter? pauseMenuPanel = null;
 
         private IState currentState = new EmptyState();
 
@@ -28,7 +32,9 @@ namespace HackedDesign
 #pragma warning restore CS8618
 
         public Camera? MainCamera { get { return mainCamera; } private set { mainCamera = value; } }
-        public PlayerController? Player { get { return player; } private set { player = value; } }
+        public AbstractController? Player { get { return player; } private set { player = value; } }
+        public List<AIController> AI { get { return ai; } private set { ai = value; } }
+        public List<Ship> Ships { get { return shipPrefabs; } }
 
         public IState CurrentState
         {
@@ -60,7 +66,19 @@ namespace HackedDesign
         public void SetCharSelectMenu() => CurrentState = new CharSelectMenuState(this.charSelectMenuPanel);
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
         public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel);
-        public void SetPaused() => CurrentState = new PauseState();
+        public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
+        public void RandomizeAI()
+        {
+            List<Ship> remaining = shipPrefabs.Where(s => s.pilot != Player.ship.pilot).ToList();
+
+            for (int i = 0; i < 5; i++)
+            {
+                var chosen = remaining[Random.Range(0, remaining.Count)];
+                ai[i].SetShip(chosen);
+                Debug.Log("AI " + i + ":" + chosen.pilot);
+                remaining.Remove(chosen);
+            }
+        }
 
         private void Initialization()
         {
@@ -77,6 +95,7 @@ namespace HackedDesign
             this.mainMenuPanel?.Hide();
             this.charSelectMenuPanel?.Hide();
             this.levelSelectMenuPanel?.Hide();
+            this.pauseMenuPanel?.Hide();
             // this.readyPanel?.Hide();
             // this.crashPanel?.Hide();
             // this.losePanel?.Hide();

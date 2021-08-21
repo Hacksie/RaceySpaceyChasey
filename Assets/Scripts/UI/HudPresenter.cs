@@ -9,6 +9,7 @@ namespace HackedDesign.UI
     public class HudPresenter : AbstractPresenter
     {
         [SerializeField] private UnityEngine.UI.RawImage hudFace;
+        [SerializeField] private UnityEngine.UI.Text speed;
         [SerializeField] private List<UnityEngine.UI.Image> raceyEmpty;
         [SerializeField] private List<UnityEngine.UI.Image> raceyFull;
         [SerializeField] private List<UnityEngine.UI.Image> spaceyEmpty;
@@ -23,6 +24,7 @@ namespace HackedDesign.UI
             {
                 hudFace.texture = GameManager.Instance.Player.ship.renderTexture;
                 RepaintBars();
+                speed.text = GameManager.Instance.Player.currentSpeed.ToString("N0");
             }
         }
 

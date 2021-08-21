@@ -8,7 +8,7 @@ namespace HackedDesign
         // private PlayerController player;
         // private List<Ship> ships;
         // private List<GameObject> cursors;
-        // private UI.AbstractPresenter hudPresenter;
+        private UI.AbstractPresenter pausePresenter;
         // private ObstaclePool obstaclePool;
         // private PropsPool propsPool;
         // private AudioSource music;
@@ -17,8 +17,9 @@ namespace HackedDesign
 
 
         //public PlayingState(PlayerController player, List<Ship> ships, List<GameObject> cursors, ObstaclePool obstaclePool,PropsPool propsPool, AudioSource music, UI.AbstractPresenter hudPresenter)
-        public PauseState()
+        public PauseState(UI.AbstractPresenter pausePresenter)
         {
+            this.pausePresenter = pausePresenter;
             // this.player = player;
             // this.ships = ships;
             // this.cursors = cursors;
