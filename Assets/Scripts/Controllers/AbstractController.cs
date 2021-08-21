@@ -29,6 +29,14 @@ namespace HackedDesign
             this.ship = newShip;
         }
 
+        public void Reset()
+        {
+            this.dollyCart.m_Position = 0;
+            currentSpeed = 0;
+        }
+
+
+
         protected void Awake()
         {
             dollyCart = GetComponent<Cinemachine.CinemachineDollyCart>();

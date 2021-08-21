@@ -16,7 +16,7 @@ namespace HackedDesign.UI
         public void ResumeEvent()
         {
             Debug.Log("Resume");
-            //GameManager.Instance.SetLevelSelectMenu();
+            GameManager.Instance.SetPlaying();
         }
 
         public void QuitEvent()

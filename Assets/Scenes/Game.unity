@@ -7554,7 +7554,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 1699303585}
   charSelectMenuPanel: {fileID: 862813564}
   levelSelectMenuPanel: {fileID: 1655034045}
-  pauseMenuPanel: {fileID: 0}
+  pauseMenuPanel: {fileID: 1565204421}
 --- !u!4 &1051507187
 Transform:
   m_ObjectHideFlags: 0

@@ -34,19 +34,17 @@ namespace HackedDesign
         {
             if(!Cursor.visible)
                 Cursor.visible = true;            
-            // this.ships.ForEach(s => s.Begin());
-            //this.hudPresenter.Show();
+            this.pausePresenter.Show();
+            Debug.Log("paused");
         }
 
         public void End()
         {
-            Cursor.visible = true;
-            //this.hudPresenter.Hide();
+            this.pausePresenter.Hide();
         }
 
         public void Update()
         {
-            Cursor.visible = false;
         }
 
 
@@ -64,7 +62,7 @@ namespace HackedDesign
 
         public void Start()
         {
-            //GameManager.Instance.SetPause();
+            GameManager.Instance.SetPlaying();
         }
 
         public void Select()

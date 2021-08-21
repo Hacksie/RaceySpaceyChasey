@@ -67,11 +67,20 @@ namespace HackedDesign
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
         public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel);
         public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
+
+        public void ResetAI()
+        {
+            for(int i=0;i< ai.Count; i++)
+            {
+                ai[i].Reset();
+            }
+        }
+
         public void RandomizeAI()
         {
             List<Ship> remaining = shipPrefabs.Where(s => s.pilot != Player.ship.pilot).ToList();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < ai.Count; i++)
             {
                 var chosen = remaining[Random.Range(0, remaining.Count)];
                 ai[i].SetShip(chosen);

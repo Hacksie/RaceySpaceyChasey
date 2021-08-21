@@ -52,7 +52,7 @@ namespace HackedDesign
 
         public void Start()
         {
-            //GameManager.Instance.SetPause();
+            GameManager.Instance.SetPaused();
         }
 
         public void Select()

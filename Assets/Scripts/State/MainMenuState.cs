@@ -25,6 +25,9 @@ namespace HackedDesign
         {
             //this.playMusic.Stop(); // Just in case we got here and it was playing (i.e. the pause menu)
             //this.music.Play();
+            GameManager.Instance.Player.Reset();
+            GameManager.Instance.ResetAI();
+            
             this.mainMenuPresenter.PopulateValues();
             this.mainMenuPresenter.Show();
             this.mainMenuPresenter.Repaint();
