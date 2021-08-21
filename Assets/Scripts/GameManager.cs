@@ -17,6 +17,7 @@ namespace HackedDesign
         [SerializeField] private AudioSource? playMusic = null;
         [SerializeField] private List<Ship> shipPrefabs = null;
         [SerializeField] private List<AIController> ai = null;
+        [SerializeField] private List<Color> aiColors = null;
 
         [Header("UI")]
         [SerializeField] private UI.HudPresenter? hudPanel = null;
@@ -24,6 +25,11 @@ namespace HackedDesign
         [SerializeField] private UI.CharSelectMenuPresenter? charSelectMenuPanel = null;
         [SerializeField] private UI.LevelSelectMenuPresenter? levelSelectMenuPanel = null;
         [SerializeField] private UI.PauseMenuPresenter? pauseMenuPanel = null;
+        [SerializeField] private UI.CountdownPresenter? countdownPanel = null;
+
+        [Header("State")]
+        [SerializeField] private bool racing = false;
+        [SerializeField] private float lapTimer = 0.0f;
 
         private IState currentState = new EmptyState();
 
@@ -35,6 +41,8 @@ namespace HackedDesign
         public AbstractController? Player { get { return player; } private set { player = value; } }
         public List<AIController> AI { get { return ai; } private set { ai = value; } }
         public List<Ship> Ships { get { return shipPrefabs; } }
+        public List<Color> AIColors { get { return aiColors; }}
+        public bool Racing { get { return racing;} private set { racing = value; }}
 
         public IState CurrentState
         {
@@ -52,8 +60,6 @@ namespace HackedDesign
             }
         }
 
-
-
         private GameManager() => Instance = this;
 
         void Start() => Initialization();
@@ -65,8 +71,26 @@ namespace HackedDesign
         public void SetMainMenu() => CurrentState = new MainMenuState(this.menuMusic, this.playMusic, this.mainMenuPanel);
         public void SetCharSelectMenu() => CurrentState = new CharSelectMenuState(this.charSelectMenuPanel);
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
-        public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel);
+        public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel, this.countdownPanel);
         public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
+
+        public void StartRacing() {
+            Debug.Log("Race started!");
+            racing = true;
+        }
+
+        public void StopRacing() {
+            Debug.Log("Race ended!");
+            racing = false;
+        }
+
+        public void Reset()
+        {
+            racing = false;
+            lapTimer = 0.0f;
+            player?.Reset();
+            ResetAI();
+        }
 
         public void ResetAI()
         {
@@ -105,13 +129,7 @@ namespace HackedDesign
             this.charSelectMenuPanel?.Hide();
             this.levelSelectMenuPanel?.Hide();
             this.pauseMenuPanel?.Hide();
-            // this.readyPanel?.Hide();
-            // this.crashPanel?.Hide();
-            // this.losePanel?.Hide();
-            // this.winPanel?.Hide();
-            // this.pausePanel?.Hide();
-            // this.cursors.ForEach(c => c.SetActive(false));
+            this.countdownPanel?.Hide();
         }
-
     }
 }

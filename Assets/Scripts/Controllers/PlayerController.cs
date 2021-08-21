@@ -25,8 +25,6 @@ namespace HackedDesign
         [SerializeField] public Transform playerModel = null;
         [SerializeField] public Transform shipModel = null;
 
-
-
         // [Header("Settings")]
 
 
@@ -85,31 +83,32 @@ namespace HackedDesign
 
         public void FireEvent(InputAction.CallbackContext context)
         {
+            
+            if (!GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                return;
+            }
             Debug.Log("Fire");
-            // if (!GameManager.Instance.CurrentState.PlayerActionAllowed)
-            // {
-            //     return;
-            // }
 
-            // if (context.performed)
-            // {
-            //     us?.Launch();
-            // }
+            if (context.performed)
+            {
+                Fire();
+            }
         }
 
         public void BoostEvent(InputAction.CallbackContext context)
         {
-            Debug.Log("Boost");
-            // if (!GameManager.Instance.CurrentState.PlayerActionAllowed)
-            // {
-            //     return;
-            // }
 
-            // if (context.performed)
-            // {
-            //     us?.Launch();
-            // }
-        }        
+            if (!GameManager.Instance.CurrentState.PlayerActionAllowed)
+            {
+                return;
+            }
+
+            if (context.performed)
+            {
+                Boost();
+            }
+        }
 
 
         public void StartEvent(InputAction.CallbackContext context)
@@ -165,7 +164,10 @@ namespace HackedDesign
         {
             if (isAccelerating && ship)
             {
-                this.currentSpeed += ship.acceleration * Time.deltaTime;
+                if (this.currentSpeed < this.maxSpeed && inputVector.magnitude == 0)
+                {
+                    this.currentSpeed += ship.acceleration * Time.deltaTime;
+                }
             }
         }
 

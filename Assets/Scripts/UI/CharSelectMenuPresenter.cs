@@ -114,10 +114,10 @@ namespace HackedDesign.UI
             ClearSelectedText();
             // Calc AI
             GameManager.Instance.RandomizeAI();
-            SetSelectedText(GameManager.Instance.Player.ship.pilot, "Player");
+            SetSelectedText(GameManager.Instance.Player.ship.pilot, "Player", Color.white);
             for(int i=0;i<5;i++)
             {
-                SetSelectedText(GameManager.Instance.AI[i].ship.pilot, "AI " + i);
+                SetSelectedText(GameManager.Instance.AI[i].ship.pilot, "AI " + i, GameManager.Instance.AIColors[i]);
             }
 
         }
@@ -135,36 +135,45 @@ namespace HackedDesign.UI
             capsparklesSelectedText.text = "";
         }
 
-        private void SetSelectedText(string character, string text)
+        private void SetSelectedText(string character, string text, Color color)
         {
             switch (character)
             {
                 case "The Girl":
                     thegirlSelectedText.text = text;
+                    thegirlSelectedText.color = color;
                     break;
                 case "T-MIN-8-OR":
                     tmin8orSelectedText.text = text;
+                    tmin8orSelectedText.color = color;
                     break;
                 case "Le General":
                     legeneralSelectedText.text = text;
+                    legeneralSelectedText.color = color;
                     break;
                 case "Dapper":
                     dapperSelectedText.text = text;
+                    dapperSelectedText.color = color;
                     break;
                 case "Robin Williams":
                     robinSelectedText.text = text;
+                    robinSelectedText.color = color;
                     break;
                 case "The Dude":
                     thedudeSelectedText.text = text;
+                    thedudeSelectedText.color = color;
                     break;
                 case "Bork":
                     borkSelectedText.text = text;
+                    borkSelectedText.color = color;
                     break;
                 case "Sir Knee":
                     sirkneeSelectedText.text = text;
+                    sirkneeSelectedText.color = color;
                     break;
                 case "Cap Sparkles":
                     capsparklesSelectedText.text = text;
+                    capsparklesSelectedText.color = color;
                     break;
             }
 

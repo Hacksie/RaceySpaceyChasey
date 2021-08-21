@@ -9,25 +9,28 @@ namespace HackedDesign
     {
         protected override void UpdateShipLean()
         {
-            
+
         }
 
         protected override void UpdateShipPosition()
         {
-            
+
         }
 
         protected override void UpdateShipRotation()
         {
-            
+
         }
 
         protected override void UpdateShipAcceleration()
         {
             if (ship)
             {
-                this.currentSpeed += ship.acceleration * Time.deltaTime;
+                if (this.currentSpeed <= this.maxSpeed)
+                {
+                    this.currentSpeed += ship.acceleration * Time.deltaTime;
+                }
             }
-        }    
+        }
     }
 }

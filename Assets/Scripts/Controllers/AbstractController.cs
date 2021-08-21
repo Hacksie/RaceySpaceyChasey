@@ -45,14 +45,12 @@ namespace HackedDesign
         protected void Update()
         {
             dollyCart.m_Speed = 0;
-            if (GameManager.Instance.CurrentState.PlayerActionAllowed && ship)
+            if (GameManager.Instance.CurrentState.PlayerActionAllowed && GameManager.Instance.Racing && ship)
             {
                 this.currentSpeed -= ship.decceleration * Time.deltaTime;
                 this.currentSpeed = Mathf.Max(this.currentSpeed, 0);
 
                 UpdateShipAcceleration();
-
-                this.currentSpeed = Mathf.Clamp(this.currentSpeed, 0, maxSpeed);
 
                 dollyCart.m_Speed = this.currentSpeed;
             }
@@ -60,6 +58,23 @@ namespace HackedDesign
             UpdateShipPosition();
             UpdateShipRotation();
             UpdateShipLean();
+        }
+
+        protected void Boost()
+        {
+            if (ship && ship.currentRacey > 0)
+            {
+                ship.currentRacey--;
+                this.currentSpeed += 5.0f;
+            }
+        }        
+
+        protected void Fire()
+        {
+            if(ship && ship.currentChasey > 0)
+            {
+                ship.currentChasey--;
+            }
         }
 
 
