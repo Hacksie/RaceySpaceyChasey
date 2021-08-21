@@ -17,16 +17,16 @@ namespace HackedDesign
         [Header("State")]
         [SerializeField] public Ship ship;
 
-        public float CurrentPosition { get { return dollyCart.m_Position; }}
+        public float CurrentPosition { get { return dollyCart.m_Position; } }
 
         public void SetShip(Ship shipPrefab)
         {
-            for(int i = 0; i<shipModelParent.transform.childCount; i++)
+            for (int i = 0; i < shipModelParent.transform.childCount; i++)
             {
                 GameObject.Destroy(shipModelParent.transform.GetChild(i).gameObject);
             }
 
-            var go = GameObject.Instantiate(shipPrefab, shipModelParent.transform.position ,Quaternion.identity, shipModelParent);
+            var go = GameObject.Instantiate(shipPrefab, shipModelParent.transform.position, Quaternion.identity, shipModelParent);
             var newShip = go.GetComponent<Ship>();
             this.ship = newShip;
         }
@@ -60,6 +60,8 @@ namespace HackedDesign
             UpdateShipPosition();
             UpdateShipRotation();
             UpdateShipLean();
+
+
         }
 
         protected void Boost()
@@ -69,11 +71,11 @@ namespace HackedDesign
                 ship.currentRacey--;
                 this.currentSpeed += 5.0f;
             }
-        }        
+        }
 
         protected void Fire()
         {
-            if(ship && ship.currentChasey > 0)
+            if (ship && ship.currentChasey > 0)
             {
                 ship.currentChasey--;
             }

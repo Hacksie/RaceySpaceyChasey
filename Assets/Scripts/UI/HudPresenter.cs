@@ -30,7 +30,7 @@ namespace HackedDesign.UI
                 RepaintBars();
                 RepaintLeaderboard();
                 speed.text = GameManager.Instance.Player.currentSpeed.ToString("N0");
-                laptimerText.text = GameManager.Instance.LapTimer.ToString("N");
+                laptimerText.text = GameManager.Instance.LapTimer.ToString("N0");
                 lapText.text = GameManager.Instance.CurrentLap.ToString("N0") + "/" + GameManager.Instance.MaxLaps.ToString("N0");
             }
         }

@@ -79,14 +79,21 @@ namespace HackedDesign
         public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel, this.countdownPanel);
         public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
 
+        public void IncLapTimer(float amount)
+        {
+            lapTimer += amount;
+        }
+
         public void StartRacing() {
             Debug.Log("Race started!");
             racing = true;
+            lapTimer = 0;
         }
 
         public void StopRacing() {
             Debug.Log("Race ended!");
             racing = false;
+            lapTimer = 0;
         }
 
         public void Reset()

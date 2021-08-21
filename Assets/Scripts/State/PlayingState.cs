@@ -55,6 +55,7 @@ namespace HackedDesign
             if(countdown < 0)
             {
                 this.countdownPresenter.Hide();
+                GameManager.Instance.IncLapTimer(Time.deltaTime);
             }
             //this.player.Update();
         }
