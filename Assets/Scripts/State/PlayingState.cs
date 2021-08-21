@@ -5,7 +5,7 @@ namespace HackedDesign
 {
     public class PlayingState : IState
     {
-        // private PlayerController player;
+        private PlayerController player;
         // private List<Ship> ships;
         // private List<GameObject> cursors;
         // private UI.AbstractPresenter hudPresenter;
@@ -16,10 +16,10 @@ namespace HackedDesign
         public bool PlayerActionAllowed => true;
 
 
-        //public PlayingState(PlayerController player, List<Ship> ships, List<GameObject> cursors, ObstaclePool obstaclePool,PropsPool propsPool, AudioSource music, UI.AbstractPresenter hudPresenter)
-        public PlayingState()
+        //public PlayingState(List<Ship> ships, List<GameObject> cursors, ObstaclePool obstaclePool,PropsPool propsPool, AudioSource music, UI.AbstractPresenter hudPresenter)
+        public PlayingState(PlayerController player)
         {
-            // this.player = player;
+            this.player = player;
             // this.ships = ships;
             // this.cursors = cursors;
             // this.music = music;
@@ -46,6 +46,7 @@ namespace HackedDesign
         public void Update()
         {
             Cursor.visible = false;
+            //this.player.Update();
         }
 
 

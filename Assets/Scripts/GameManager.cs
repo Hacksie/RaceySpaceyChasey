@@ -8,23 +8,27 @@ namespace HackedDesign
         public const string gameVersion = "1.01";
 
         [Header("Game")]
-
+        [SerializeField] private Camera? mainCamera = null;
+        [SerializeField] private PlayerController? player = null;
         [SerializeField] private UnityEngine.Audio.AudioMixer? masterMixer = null;
         [SerializeField] private AudioSource? menuMusic = null;
         [SerializeField] private AudioSource? playMusic = null;
 
-[Header("UI")]
+        [Header("UI")]
 
         //[SerializeField] private UI.HudPresenter? hudPanel = null;
-        [SerializeField] private UI.MainMenuPresenter? mainMenuPanel = null;        
-        [SerializeField] private UI.CharSelectMenuPresenter? charSelectMenuPanel = null;        
-        [SerializeField] private UI.LevelSelectMenuPresenter? levelSelectMenuPanel = null;        
+        [SerializeField] private UI.MainMenuPresenter? mainMenuPanel = null;
+        [SerializeField] private UI.CharSelectMenuPresenter? charSelectMenuPanel = null;
+        [SerializeField] private UI.LevelSelectMenuPresenter? levelSelectMenuPanel = null;
 
         private IState currentState = new EmptyState();
 
 #pragma warning disable CS8618
         public static GameManager Instance { get; private set; }
-#pragma warning restore CS8618     
+#pragma warning restore CS8618
+
+        public Camera? MainCamera { get { return mainCamera; } private set { mainCamera = value; } }
+        public PlayerController? Player { get { return player; } private set { player = value; } }
 
         public IState CurrentState
         {
@@ -42,18 +46,20 @@ namespace HackedDesign
             }
         }
 
+
+
         private GameManager() => Instance = this;
 
         void Start() => Initialization();
 
         void Update() => CurrentState?.Update();
         void LateUpdate() => CurrentState?.LateUpdate();
-        void FixedUpdate() => CurrentState?.FixedUpdate(); 
+        void FixedUpdate() => CurrentState?.FixedUpdate();
 
         public void SetMainMenu() => CurrentState = new MainMenuState(this.menuMusic, this.playMusic, this.mainMenuPanel);
         public void SetCharSelectMenu() => CurrentState = new CharSelectMenuState(this.charSelectMenuPanel);
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
-        public void SetPlaying() => CurrentState = new PlayingState();
+        public void SetPlaying() => CurrentState = new PlayingState(this.player);
         public void SetPaused() => CurrentState = new PauseState();
 
         private void Initialization()
@@ -77,7 +83,7 @@ namespace HackedDesign
             // this.winPanel?.Hide();
             // this.pausePanel?.Hide();
             // this.cursors.ForEach(c => c.SetActive(false));
-        }        
+        }
 
     }
 }
