@@ -16,7 +16,7 @@ namespace HackedDesign
 
         [Header("UI")]
 
-        //[SerializeField] private UI.HudPresenter? hudPanel = null;
+        [SerializeField] private UI.HudPresenter? hudPanel = null;
         [SerializeField] private UI.MainMenuPresenter? mainMenuPanel = null;
         [SerializeField] private UI.CharSelectMenuPresenter? charSelectMenuPanel = null;
         [SerializeField] private UI.LevelSelectMenuPresenter? levelSelectMenuPanel = null;
@@ -59,7 +59,7 @@ namespace HackedDesign
         public void SetMainMenu() => CurrentState = new MainMenuState(this.menuMusic, this.playMusic, this.mainMenuPanel);
         public void SetCharSelectMenu() => CurrentState = new CharSelectMenuState(this.charSelectMenuPanel);
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
-        public void SetPlaying() => CurrentState = new PlayingState(this.player);
+        public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel);
         public void SetPaused() => CurrentState = new PauseState();
 
         private void Initialization()
@@ -73,7 +73,7 @@ namespace HackedDesign
 
         private void HideAllUI()
         {
-            // this.hudPanel?.Hide();
+            this.hudPanel?.Hide();
             this.mainMenuPanel?.Hide();
             this.charSelectMenuPanel?.Hide();
             this.levelSelectMenuPanel?.Hide();

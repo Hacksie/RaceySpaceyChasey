@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+#nullable enable
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
-public class AIController : MonoBehaviour
+namespace HackedDesign
 {
-    // Start is called before the first frame update
-    void Start()
+    public class AIController : AbstractController
     {
-        
-    }
+        protected override void UpdateShipLean()
+        {
+            
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void UpdateShipPosition()
+        {
+            
+        }
+
+        protected override void UpdateShipRotation()
+        {
+            
+        }
+
+        protected override void UpdateShipAcceleration()
+        {
+            this.forwardSpeed = 10;
+        }        
     }
 }

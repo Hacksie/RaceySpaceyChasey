@@ -6,33 +6,20 @@ namespace HackedDesign
     public class PlayingState : IState
     {
         private PlayerController player;
-        // private List<Ship> ships;
-        // private List<GameObject> cursors;
-        // private UI.AbstractPresenter hudPresenter;
-        // private ObstaclePool obstaclePool;
-        // private PropsPool propsPool;
-        // private AudioSource music;
+        private UI.AbstractPresenter hudPresenter;
+
 
         public bool PlayerActionAllowed => true;
 
-
-        //public PlayingState(List<Ship> ships, List<GameObject> cursors, ObstaclePool obstaclePool,PropsPool propsPool, AudioSource music, UI.AbstractPresenter hudPresenter)
-        public PlayingState(PlayerController player)
+        public PlayingState(PlayerController player, UI.AbstractPresenter hudPresenter)
         {
             this.player = player;
-            // this.ships = ships;
-            // this.cursors = cursors;
-            // this.music = music;
-            // this.obstaclePool = obstaclePool;
-            // this.propsPool = propsPool;
-            // this.hudPresenter = hudPresenter;
+            this.hudPresenter = hudPresenter;
         }
-
 
         public void Begin()
         {
-            // this.ships.ForEach(s => s.Begin());
-            //this.hudPresenter.Show();
+            this.hudPresenter.Show();
             if(Cursor.visible)
                 Cursor.visible = false;            
         }
@@ -40,12 +27,13 @@ namespace HackedDesign
         public void End()
         {
             Cursor.visible = true;
-            //this.hudPresenter.Hide();
+            this.hudPresenter.Hide();
         }
 
         public void Update()
         {
             Cursor.visible = false;
+            this.hudPresenter.Repaint();
             //this.player.Update();
         }
 
