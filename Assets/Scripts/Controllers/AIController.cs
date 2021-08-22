@@ -44,10 +44,10 @@ namespace HackedDesign
             {
                 //Debug.Log("Avoiding shit", this);
                 if (targetVert < 0)
-                    targetVert += 1;
+                    targetVert = -1;
 
                 if (targetVert > 0)
-                    targetVert -= 1;
+                    targetVert = 1;
             }
 
         }
@@ -74,7 +74,7 @@ namespace HackedDesign
             if (decisionCooldown >= (ship.decisionSpeed))
             {
                 decisionCooldown = 0 - Random.Range(0, 5); // Break up the decisions
-                targetVert = Random.Range(-3, -5.5f);
+                targetVert = Random.Range(-2.5f, -5f);
 
                 if(Random.Range(0, 1.0f) < (ship.aggressionChance * ship.currentRacey))
                 {

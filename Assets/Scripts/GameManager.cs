@@ -124,6 +124,7 @@ namespace HackedDesign
             lapTimer = 0.0f;
             currentLap = 1;
             maxLaps = 3;
+            MissilePool.Reset();
             player?.Reset();
             ResetAI();
         }

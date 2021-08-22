@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   timeout: 30
-  speed: 15
+  speed: 40
   turnSpeed: 50
   fired: 0
 --- !u!1 &4599825716794668006

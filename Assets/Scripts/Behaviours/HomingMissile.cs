@@ -12,7 +12,7 @@ namespace HackedDesign
 
         public bool fired = false;
         private float currentSpeed = 0;
-        private string pilot = "";
+        public string pilot = "";
 
         private Rigidbody rb;
 
@@ -50,7 +50,7 @@ namespace HackedDesign
         {
             Debug.Log("missile fired");
             this.fired = true;
-            this.currentSpeed = speed + baseSpeed;
+            this.currentSpeed = speed; // + baseSpeed;
             this.target = target;
             this.pilot = pilot;
             timer = Time.time;

@@ -11,6 +11,19 @@ namespace HackedDesign
         [SerializeField] List<HomingMissile> missileList;
         [SerializeField] List<Mine> mineList;
 
+        public void Reset()
+        {
+            foreach(var missile in missileList)
+            {
+                missile.Reset();
+            }
+
+            foreach(var mine in mineList)
+            {
+                mine.Reset();
+            }
+        }
+
         public void Fire(Vector3 position, Vector3 forward, Transform target, float baseSpeed, string pilot)
         {
             var missile =  missileList.FirstOrDefault(m => !m.fired);
@@ -18,10 +31,12 @@ namespace HackedDesign
             if(!missile)
             {
                 var go = GameObject.Instantiate(missilePrefab.gameObject, position, Quaternion.identity, transform);
-                go.transform.forward = forward;
                 missile = go.GetComponent<HomingMissile>();
                 missileList.Add(missile);
             }
+
+            missile.transform.position = position;
+            missile.transform.forward = forward;
 
             missile.Reset();
             missile.gameObject.SetActive(true);
