@@ -28,6 +28,9 @@ namespace HackedDesign
 
         public void Begin()
         {
+            if (GameManager.Instance.MenuMusic.isPlaying)
+                GameManager.Instance.MenuMusic.Stop();
+
             this.hudPresenter.Show();
             this.countdownPresenter.Show();
             this.countdownPresenter.SetText("Ready!");
@@ -44,11 +47,13 @@ namespace HackedDesign
                 GameManager.Instance.AI[i].SetStartPosition((i + 1) * slice);
             }
 
-            
+
 
             var points = path.m_Waypoints.Select(e => e.position);
             lineRenderer.positionCount = points.Count();
             lineRenderer.SetPositions(points.ToArray());
+
+
         }
 
         public void End()
@@ -61,17 +66,18 @@ namespace HackedDesign
         {
             //Cursor.visible = false;
             this.hudPresenter.Repaint();
-            if(countdown >= 0)
+            if (countdown >= 0)
             {
                 countdown -= Time.deltaTime;
-                string text = countdown >3 ? "Ready?" : (countdown < 1 ? "Go!" : countdown.ToString("N0") );
+                string text = countdown > 3 ? "Ready?" : (countdown < 1 ? "Go!" : countdown.ToString("N0"));
                 this.countdownPresenter.SetText(text);
-                if(!GameManager.Instance.Racing && countdown < 1)
+                if (!GameManager.Instance.Racing && countdown < 1)
                 {
                     GameManager.Instance.StartRacing();
+                    GameManager.Instance.PlayMusic.Play();
                 }
             }
-            if(countdown < 0)
+            if (countdown < 0)
             {
                 this.countdownPresenter.Hide();
                 GameManager.Instance.IncLapTimer(Time.deltaTime);

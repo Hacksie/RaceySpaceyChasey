@@ -55,6 +55,8 @@ namespace HackedDesign
         public int CurrentLap { get { return currentLap; } private set { currentLap = value; }}
         public int MaxLaps { get { return maxLaps;} private set { maxLaps = value;}}
         public bool PassiveAI { get { return passiveAI; } private set { passiveAI = value; }}
+        public AudioSource PlayMusic { get { return playMusic; } private set { playMusic = value;}}
+        public AudioSource MenuMusic { get { return menuMusic; } private set { playMusic = value;}}
 
 
         public IState CurrentState

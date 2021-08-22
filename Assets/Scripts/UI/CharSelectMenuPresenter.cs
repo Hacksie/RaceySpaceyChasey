@@ -143,7 +143,7 @@ namespace HackedDesign.UI
         {
             switch (character)
             {
-                case "The Girl":
+                case "Sally Speed":
                     thegirlSelectedText.text = text;
                     thegirlSelectedText.color = color;
                     break;

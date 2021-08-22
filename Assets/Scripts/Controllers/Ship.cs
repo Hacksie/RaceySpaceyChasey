@@ -25,16 +25,12 @@ namespace HackedDesign
         [SerializeField] public int currentChasey = 1;
         [SerializeField] public string currentChaseyType = "";
 
-        // Start is called before the first frame update
-        void Start()
+        public void Reset()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            currentRacey = maxRacey;
+            currentSpacey = maxSpacey;
+            currentChasey = maxChasey;
+            currentChaseyType = "Missile";
         }
     }
 }

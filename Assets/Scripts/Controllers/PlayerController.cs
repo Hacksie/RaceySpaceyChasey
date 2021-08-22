@@ -24,7 +24,7 @@ namespace HackedDesign
         [SerializeField] private Transform aimTarget = null;
         [SerializeField] private Camera mainCamera = null;
         [SerializeField] public Transform playerModel = null;
-        
+
 
         // [Header("Settings")]
 
@@ -128,13 +128,16 @@ namespace HackedDesign
             if (!DOTween.IsTweening(shipModel))
             {
                 shipModel.DOLocalRotate(new Vector3(shipModel.localEulerAngles.x, shipModel.localEulerAngles.y, 360 * -dir), .4f, RotateMode.LocalAxisAdd).SetEase(Ease.OutSine);
+
+                if (this.barrelRollSound)
+                    this.barrelRollSound.Play();
             }
         }
 
         protected override void UpdateShipPosition()
         {
             shipModel.localPosition = new Vector3(shipModel.localPosition.x, Mathf.Clamp(shipModel.localPosition.y + (inputVector.y * movementSpeed * Time.deltaTime), -6, 6), shipModel.localPosition.z);
-            
+
         }
 
         protected override void UpdateShipRotation()

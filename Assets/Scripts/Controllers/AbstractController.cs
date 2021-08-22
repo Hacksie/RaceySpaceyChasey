@@ -19,6 +19,11 @@ namespace HackedDesign
         [SerializeField] public Cinemachine.CinemachineDollyCart dollyCart;
         [SerializeField] public Transform shipModelParent;
         [SerializeField] public Transform shipModel = null;
+        [SerializeField] public AudioSource engineSound = null;
+        [SerializeField] public AudioSource boostSound = null;
+        [SerializeField] public AudioSource missileSound = null;
+        [SerializeField] public AudioSource barrelRollSound = null;
+
 
         [Header("State")]
         [SerializeField] public Ship ship;
@@ -32,18 +37,23 @@ namespace HackedDesign
         {
             for (int i = 0; i < shipModelParent.transform.childCount; i++)
             {
-                GameObject.Destroy(shipModelParent.transform.GetChild(i).gameObject);
+                GameObject.DestroyImmediate(shipModelParent.transform.GetChild(i).gameObject);
             }
 
             var go = GameObject.Instantiate(shipPrefab, shipModelParent.transform.position, Quaternion.identity, shipModelParent);
             var newShip = go.GetComponent<Ship>();
             this.ship = newShip;
+            this.ship.Reset();
         }
 
         public void Reset()
         {
             this.dollyCart.m_Position = 0;
             currentSpeed = 0;
+            lastBoostTime = 0;
+            lastMissileTime = 0;
+            if(engineSound)
+                engineSound.Stop();
         }
 
         protected void Awake()
@@ -59,12 +69,19 @@ namespace HackedDesign
                 this.currentSpeed -= ship.decceleration * Time.deltaTime;
                 this.currentSpeed = Mathf.Max(this.currentSpeed, 0);
 
+                if(engineSound && !engineSound.isPlaying)
+                    engineSound.Play();
+
                 UpdateShipAcceleration();
                 UpdateShipPosition();
                 UpdateShipRotation();
                 UpdateShipLean();
 
                 dollyCart.m_Speed = this.currentSpeed;
+            }
+            else{
+                if(engineSound)
+                    engineSound.Stop();
             }
         }
 
@@ -73,12 +90,18 @@ namespace HackedDesign
             if (free)
             {
                 this.currentSpeed += 5.0f;
+
+                if(boostSound)
+                    boostSound.Play();
             }
             else if (ship && ship.currentRacey > 0 && lastBoostTime <= (Time.time - boostCooldown))
             {
                 ship.currentRacey--;
                 this.currentSpeed += 5.0f;
                 lastBoostTime = Time.time;
+
+                if(boostSound)
+                    boostSound.Play();
             }
         }
 
@@ -86,6 +109,8 @@ namespace HackedDesign
         {
             if (ship && ship.currentChasey > 0 && lastBoostTime <= (Time.time - boostCooldown) && GameManager.Instance.CurrentState.PlayerActionAllowed && GameManager.Instance.Racing)
             {
+                if(missileSound)
+                    missileSound.Play();
                 //FIXME: Remove this on test complete
                 ship.currentChasey--;
                 lastBoostTime = Time.time;
