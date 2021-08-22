@@ -56,13 +56,14 @@ namespace HackedDesign
                 this.currentSpeed = Mathf.Max(this.currentSpeed, 0);
 
                 UpdateShipAcceleration();
+                UpdateShipPosition();
+                UpdateShipRotation();
+                UpdateShipLean();
 
                 dollyCart.m_Speed = this.currentSpeed;
             }
 
-            UpdateShipPosition();
-            UpdateShipRotation();
-            UpdateShipLean();
+
 
 
         }
@@ -93,28 +94,28 @@ namespace HackedDesign
             {
                 ship.currentChasey--;
                 AbstractController target = null;
-                switch(ship.currentChaseyType)
+                switch (ship.currentChaseyType)
                 {
                     case "Twin":
-                    target = GetRandomForwardTarget();
-                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
-                    target = GetRandomForwardTarget();
-                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
-                    break;
+                        target = GetRandomForwardTarget();
+                        GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
+                        target = GetRandomForwardTarget();
+                        GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
+                        break;
                     case "Blue":
-                    target = GetFrontTarget();
-                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
-                    break;
+                        target = GetFrontTarget();
+                        GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
+                        break;
                     case "Mine":
-                    break;
+                        break;
                     case "Storm":
-                    break;
+                        break;
                     default:
-                    target = GetRandomForwardTarget();
-                    if(target)
-                        Debug.Log("Targetting " + target.ship.pilot);
-                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 7f), shipModelParent.transform.forward, target ? target.shipModel.transform : null, currentSpeed);
-                    break;
+                        target = GetRandomForwardTarget();
+                        if (target)
+                            Debug.Log("Targetting " + target.ship.pilot);
+                        GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 7f), shipModelParent.transform.forward, target ? target.shipModel.transform : null, currentSpeed);
+                        break;
                 }
             }
         }
@@ -139,7 +140,7 @@ namespace HackedDesign
             ships.AddRange(GameManager.Instance.AI);
             ships.Remove(this);
             var target = ships.OrderByDescending(s => s.dollyCart.m_Position).FirstOrDefault();
-            
+
             return target;
         }
 

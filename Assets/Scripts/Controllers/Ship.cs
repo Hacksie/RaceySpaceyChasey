@@ -16,6 +16,7 @@ namespace HackedDesign
         [SerializeField] public float acceleration = 3.0f;
         [SerializeField] public float decceleration = 1.5f;
         [SerializeField] public float decisionSpeed = 10;
+        [SerializeField] public float aggressionChance = 0.1f;
 
 
         [Header("State")]

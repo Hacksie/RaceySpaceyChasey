@@ -316,6 +316,7 @@ MonoBehaviour:
   acceleration: 13
   decceleration: 2.75
   decisionSpeed: 10
+  aggressionChance: 0.4
   currentRacey: 3
   currentSpacey: 1
   currentChasey: 1

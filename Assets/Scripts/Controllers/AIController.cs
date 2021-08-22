@@ -61,19 +61,31 @@ namespace HackedDesign
         {
             if (ship)
             {
-                if (decisionCooldown >= (ship.decisionSpeed))
-                {
-                    decisionCooldown = 0 - Random.Range(0, 5); // Break up the decisions
-                    targetVert = Random.Range(-3, -5.5f);
-                }
-
-                decisionCooldown += Time.deltaTime;
-
+                UpdateAIBehaviour();
                 if (this.currentSpeed <= this.maxSpeed)
                 {
                     this.currentSpeed += ship.acceleration * Time.deltaTime;
                 }
             }
+        }
+
+        private void UpdateAIBehaviour()
+        {
+            if (decisionCooldown >= (ship.decisionSpeed))
+            {
+                decisionCooldown = 0 - Random.Range(0, 5); // Break up the decisions
+                targetVert = Random.Range(-3, -5.5f);
+
+                // Fire a missile!
+                if (Random.Range(0, 1.0f) < (ship.aggressionChance * ship.currentChasey) && GetRandomForwardTarget() != null)
+                {
+                    Debug.Log("decided to fire a missile", this);
+                    Fire();
+                }
+            }
+
+            decisionCooldown += Time.deltaTime;
+
         }
     }
 }
