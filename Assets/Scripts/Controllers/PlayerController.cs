@@ -108,7 +108,7 @@ namespace HackedDesign
 
             if (context.performed)
             {
-                Boost();
+                Boost(false);
             }
         }
 
@@ -156,7 +156,7 @@ namespace HackedDesign
 
         protected override void UpdateShipRotation()
         {
-            playerModel.Rotate(0, 0, inputVector.x * -1 * rotateSpeed * Time.deltaTime, Space.Self);
+            playerModel.Rotate(0, 0, inputVector.x * rotateSpeed * Time.deltaTime, Space.Self);
             //playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, inputVector.y, 1)), Mathf.Deg2Rad * rotateSpeed * Time.deltaTime);
             //aimTarget.parent.position = Vector3.zero;
             //aimTarget.localPosition = new Vector3(inputVector.x, inputVector.y, 1);

@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5010876799787304370}
   - component: {fileID: 8721170950307626660}
+  - component: {fileID: 5395266860468335254}
   m_Layer: 0
   m_Name: Robin Williams
   m_TagString: Untagged
@@ -317,6 +318,35 @@ MonoBehaviour:
   currentSpacey: 1
   currentChasey: 1
   currentChaseyType: 
+--- !u!54 &5395266860468335254
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5010876799787304371}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &837438879787709763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5281416380192422259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999999, y: 0.59999996, z: 2.0256698}
+  m_Center: {x: 0, y: 0.29999998, z: 0}
 --- !u!1001 &5010876800855786530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,6 +408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee914468bc090ef4bbdf00ed037a9931, type: 3}
+--- !u!1 &5281416380192422259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ee914468bc090ef4bbdf00ed037a9931, type: 3}
+  m_PrefabInstance: {fileID: 5010876800855786530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4755955806786823113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee914468bc090ef4bbdf00ed037a9931, type: 3}

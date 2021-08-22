@@ -130,6 +130,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!65 &7847244859598985025
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346430614155106245}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999999, y: 0.79999995, z: 2.1}
+  m_Center: {x: 0, y: 0.39999998, z: 0}
 --- !u!1 &7580308494729776384
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7580308494729776385}
   - component: {fileID: 732176139607343752}
+  - component: {fileID: 4958792162349300235}
   m_Layer: 0
   m_Name: The Dude
   m_TagString: Untagged
@@ -187,6 +201,22 @@ MonoBehaviour:
   currentSpacey: 1
   currentChasey: 1
   currentChaseyType: 
+--- !u!54 &4958792162349300235
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580308494729776384}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &8624871319893128747
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3be897db9bdf48468e842cb8a107980, type: 3}
+--- !u!1 &7346430614155106245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3be897db9bdf48468e842cb8a107980, type: 3}
+  m_PrefabInstance: {fileID: 7580308493312731796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7978147720423886207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f3be897db9bdf48468e842cb8a107980, type: 3}

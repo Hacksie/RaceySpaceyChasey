@@ -64,9 +64,13 @@ namespace HackedDesign
 
         }
 
-        protected void Boost()
+        public void Boost(bool free)
         {
-            if (ship && ship.currentRacey > 0)
+            if (free)
+            {
+                this.currentSpeed += 5.0f;
+            }
+            else if (ship && ship.currentRacey > 0)
             {
                 ship.currentRacey--;
                 this.currentSpeed += 5.0f;
