@@ -20,13 +20,6 @@ namespace HackedDesign
         public PauseState(UI.AbstractPresenter pausePresenter)
         {
             this.pausePresenter = pausePresenter;
-            // this.player = player;
-            // this.ships = ships;
-            // this.cursors = cursors;
-            // this.music = music;
-            // this.obstaclePool = obstaclePool;
-            // this.propsPool = propsPool;
-            // this.hudPresenter = hudPresenter;
         }
 
 
@@ -35,7 +28,6 @@ namespace HackedDesign
             if(!Cursor.visible)
                 Cursor.visible = true;            
             this.pausePresenter.Show();
-            Debug.Log("paused");
         }
 
         public void End()

@@ -21,6 +21,13 @@ namespace HackedDesign.UI
         [SerializeField] private UnityEngine.UI.Text laptimerText;
         [SerializeField] private UnityEngine.UI.Text lapText;
 
+        [SerializeField] private UnityEngine.UI.Image chaseyType;
+        [SerializeField] private Sprite boostSprite;
+        [SerializeField] private Sprite missileSprite;
+        [SerializeField] private Sprite mineSprite;
+        [SerializeField] private Sprite twinSprite;
+        [SerializeField] private Sprite blueSprite;
+        [SerializeField] private Sprite randomSprite;
 
         public override void Repaint()
         {
@@ -29,10 +36,38 @@ namespace HackedDesign.UI
                 hudFace.texture = GameManager.Instance.Player.ship.renderTexture;
                 RepaintBars();
                 RepaintLeaderboard();
+                RepaintChaseyType();
                 speed.text = GameManager.Instance.Player.currentSpeed.ToString("N0");
                 laptimerText.text = GameManager.Instance.LapTimer.ToString("N0");
                 lapText.text = GameManager.Instance.CurrentLap.ToString("N0") + "/" + GameManager.Instance.MaxLaps.ToString("N0");
             }
+        }
+
+        private void RepaintChaseyType()
+        {
+            switch(GameManager.Instance.Player.ship.currentChaseyType)
+            {
+                case "Boost":
+                    chaseyType.sprite = boostSprite;
+                    break;
+                case "Missile":
+                    chaseyType.sprite = missileSprite;
+                    break;
+                case "Mine":
+                    chaseyType.sprite = mineSprite;
+                    break;
+                case "Twin":
+                    chaseyType.sprite = twinSprite;
+                    break;
+                case "Blue":
+                    chaseyType.sprite = blueSprite;
+                    break;
+                case "Random":
+                default:
+                    chaseyType.sprite = randomSprite;
+                    break;                
+            }
+
         }
 
         // FIXME: This is nasty
@@ -44,7 +79,7 @@ namespace HackedDesign.UI
             var ordered = ships.OrderByDescending(s => s.CurrentPosition).ToList();
             for(int i = 0; i < ordered.Count(); i++)
             {
-                leaderboard[i].text = i.ToString("N0") + "." + ordered[i].ship.pilot;
+                leaderboard[i].text = (i + 1).ToString("N0") + "." + ordered[i].ship.pilot;
             }
             //= GameManager.Instance.AI.CopyTo
         }
@@ -67,20 +102,20 @@ namespace HackedDesign.UI
                 raceyFull[i].gameObject.SetActive(i < currentRacey);
             }
 
-            for (int i = 0; i < raceyEmpty.Count; i++)
-            {
-                spaceyEmpty[i].gameObject.SetActive(i < maxSpacey);
-            }
-            for (int i = 0; i < raceyFull.Count; i++)
-            {
-                spaceyFull[i].gameObject.SetActive(i < currentSpacey);
-            }            
+            // for (int i = 0; i < raceyEmpty.Count; i++)
+            // {
+            //     spaceyEmpty[i].gameObject.SetActive(i < maxSpacey);
+            // }
+            // for (int i = 0; i < raceyFull.Count; i++)
+            // {
+            //     spaceyFull[i].gameObject.SetActive(i < currentSpacey);
+            // }            
 
-            for (int i = 0; i < raceyEmpty.Count; i++)
+            for (int i = 0; i < chaseyEmpty.Count; i++)
             {
                 chaseyEmpty[i].gameObject.SetActive(i < maxChasey);
             }
-            for (int i = 0; i < raceyFull.Count; i++)
+            for (int i = 0; i < chaseyEmpty.Count; i++)
             {
                 chaseyFull[i].gameObject.SetActive(i < currentChasey);
             }            

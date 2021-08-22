@@ -21,6 +21,7 @@ namespace HackedDesign
         [SerializeField] private LineRenderer solarWinds = null;
         [SerializeField] private Cinemachine.CinemachineSmoothPath levelPath = null;
         [SerializeField] private MissilePool missilePool = null;
+        [SerializeField] private bool passiveAI = false;
 
         [Header("UI")]
         [SerializeField] private UI.HudPresenter? hudPanel = null;
@@ -29,6 +30,7 @@ namespace HackedDesign
         [SerializeField] private UI.LevelSelectMenuPresenter? levelSelectMenuPanel = null;
         [SerializeField] private UI.PauseMenuPresenter? pauseMenuPanel = null;
         [SerializeField] private UI.CountdownPresenter? countdownPanel = null;
+        [SerializeField] private UI.GameOverMenuPresenter? gameOverMenuPanel = null;
 
         [Header("State")]
         [SerializeField] private bool racing = false;
@@ -52,6 +54,7 @@ namespace HackedDesign
         public float LapTimer { get { return lapTimer; } private set { lapTimer = value; }}
         public int CurrentLap { get { return currentLap; } private set { currentLap = value; }}
         public int MaxLaps { get { return maxLaps;} private set { maxLaps = value;}}
+        public bool PassiveAI { get { return passiveAI; } private set { passiveAI = value; }}
 
 
         public IState CurrentState
@@ -83,10 +86,22 @@ namespace HackedDesign
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
         public void SetPlaying() => CurrentState = new PlayingState(this.player, this.solarWinds, this.levelPath, this.hudPanel, this.countdownPanel);
         public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
+        public void SetGameOver() => CurrentState = new GameOverState(this.gameOverMenuPanel);
 
         public void IncLapTimer(float amount)
         {
             lapTimer += amount;
+        }
+
+        public void IncLap()
+        {
+            currentLap++;
+            lapTimer = 0;
+            if(currentLap > maxLaps)
+            {
+                SetGameOver();
+                Debug.Log("Game Over!");
+            }
         }
 
         public void StartRacing() {
@@ -149,6 +164,7 @@ namespace HackedDesign
             this.levelSelectMenuPanel?.Hide();
             this.pauseMenuPanel?.Hide();
             this.countdownPanel?.Hide();
+            this.gameOverMenuPanel?.Hide();
         }
     }
 }

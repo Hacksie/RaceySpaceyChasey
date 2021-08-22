@@ -21,9 +21,6 @@ namespace HackedDesign
                 missileList.Add(missile);
             }
 
-            
-
-            Debug.Log("Fire missile!");
             missile.Reset();
             missile.gameObject.SetActive(true);
             missile.Fire(target, baseSpeed, pilot);

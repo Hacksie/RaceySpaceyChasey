@@ -134,49 +134,22 @@ namespace HackedDesign
         protected override void UpdateShipPosition()
         {
             shipModel.localPosition = new Vector3(shipModel.localPosition.x, Mathf.Clamp(shipModel.localPosition.y + (inputVector.y * movementSpeed * Time.deltaTime), -6, 6), shipModel.localPosition.z);
-            //transform.rotation = transform.rotation + Quaternion.Euler(0,0, inputVector.x * Time.deltaTime);
-            //playerModel.Rotate(0,0,inputVector.x * Time.deltaTime);
-
-            /*
-            playerModel.localPosition += new Vector3(inputVector.x, allowYMovement ? inputVector.y : 0,0) * movementSpeed * Time.deltaTime;
-
-            // Clamp input to the screen view port first
-            Vector3 modelViewPos = mainCamera.WorldToViewportPoint(playerModel.position);
-            modelViewPos.x = Mathf.Clamp(modelViewPos.x, clamp.xMin, clamp.xMax);
-            modelViewPos.y = Mathf.Clamp(modelViewPos.y, clamp.yMin, clamp.yMax);
-            Vector3 modelPos = mainCamera.ViewportToWorldPoint(modelViewPos);
-
-            // Then apply any height adjustments
-            //var height = Mathf.Max(1f, modelPos.y);
-            //modelPos.y = Mathf.Lerp(modelPos.y, height, Time.deltaTime * movementSpeed);
-            playerModel.position = modelPos;*/
+            
         }
 
         protected override void UpdateShipRotation()
         {
             playerModel.Rotate(0, 0, inputVector.x * rotateSpeed * Time.deltaTime, Space.Self);
-            //playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, inputVector.y, 1)), Mathf.Deg2Rad * rotateSpeed * Time.deltaTime);
-            //aimTarget.parent.position = Vector3.zero;
-            //aimTarget.localPosition = new Vector3(inputVector.x, inputVector.y, 1);
-
-            //playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, inputVector.y, 1)), Mathf.Deg2Rad * rotateSpeed * Time.deltaTime);
-
-            //FIXME: Work out why input rotation doesn't seem to work
-            //playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, Quaternion.LookRotation(transform.forward), Mathf.Deg2Rad * rotateSpeed * Time.deltaTime);
 
         }
 
         protected override void UpdateShipLean()
         {
-            // Vector3 targetEulerAngels = target.localEulerAngles;
-            // target.localEulerAngles = new Vector3(targetEulerAngels.x, targetEulerAngels.y, Mathf.LerpAngle(targetEulerAngels.z, -axis * leanLimit, lerpTime));
 
-            //playerModel.localEulerAngles = new Vector3(playerModel.localEulerAngles.x, playerModel.localEulerAngles.y, Mathf.LerpAngle(playerModel.localEulerAngles.z, -inputVector.x * leanAngle, leanTime * Time.deltaTime));
         }
 
         protected override void UpdateShipAcceleration()
         {
-            // if (isAccelerating && ship)
             if (ship && !isBraking && !DOTween.IsTweening(shipModel))
             {
                 if (this.currentSpeed < this.maxSpeed)

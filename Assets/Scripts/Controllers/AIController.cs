@@ -77,10 +77,13 @@ namespace HackedDesign
                 targetVert = Random.Range(-3, -5.5f);
 
                 // Fire a missile!
-                if (Random.Range(0, 1.0f) < (ship.aggressionChance * ship.currentChasey) && GetRandomForwardTarget() != null)
+                if (!GameManager.Instance.PassiveAI)
                 {
-                    Debug.Log("decided to fire a missile", this);
-                    Fire();
+                    if (Random.Range(0, 1.0f) < (ship.aggressionChance * ship.currentChasey) && GetRandomForwardTarget() != null)
+                    {
+                        Debug.Log("decided to fire a missile", this);
+                        Fire();
+                    }
                 }
             }
 

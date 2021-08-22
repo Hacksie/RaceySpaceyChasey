@@ -45,9 +45,9 @@ namespace HackedDesign.UI
 
         public void SelectTheGirl()
         {
-            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "The Girl"));
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Sally Speed"));
             //GameManager.Instance.Player.ship = ;
-            Debug.Log("Selected The Girl");
+            Debug.Log("Selected Sally Speed");
             UpdateSelections();
             //ships.Add(Ga)
             //ships.Add(GameManager.Instance.)

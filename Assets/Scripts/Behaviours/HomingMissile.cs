@@ -34,8 +34,8 @@ namespace HackedDesign
 
                     rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime));
                 }
-                timer -= Time.deltaTime;
-                if (timer <= 0)
+                
+                if (timer <= (Time.time - timeout))
                 {
                     Fizzle();
                 }
@@ -44,7 +44,6 @@ namespace HackedDesign
             {
                 rb.velocity = Vector3.zero;
             }
-
         }
 
         public void Fire(Transform target, float baseSpeed, string pilot)
@@ -54,7 +53,9 @@ namespace HackedDesign
             this.currentSpeed = speed + baseSpeed;
             this.target = target;
             this.pilot = pilot;
-            timer = timeout;
+            timer = Time.time;
+            rb.velocity = transform.forward * this.currentSpeed;
+            rb.Sleep();
         }
 
         public void Reset()
@@ -63,12 +64,10 @@ namespace HackedDesign
             timer = 0;
             rb.velocity = Vector3.zero;
             this.gameObject.SetActive(false);
-
         }
 
         private void Fizzle()
         {
-            Debug.Log("Missile fizzled");
             Reset();
         }
 
@@ -76,21 +75,22 @@ namespace HackedDesign
         {
             var controller = collision.gameObject.GetComponentInParent<AbstractController>();
 
-            Debug.Log("Missile hit " + collision.gameObject.name);
+            //Debug.Log("Missile hit " + collision.gameObject.name);
 
             if (controller)
             {
                 if (controller.ship.pilot != this.pilot)
                 {
-                    controller.Collided();
+                    controller.MissileHit();
                     Reset();
                 }
             }
-            else if (!collision.collider.isTrigger)
-            {
-                Reset();
-                Debug.Log("Missile hit something else");
-            }
+            // FIXME: this is causing the missile to immediately collide sometimes, for some reason.
+            // else if (!collision.collider.isTrigger)
+            // {
+            //     Reset();
+            //     Debug.Log("Missile hit something else");
+            // }
         }
 
 

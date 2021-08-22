@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 7364929928316362610}
   - component: {fileID: 866747284860808685}
   m_Layer: 0
-  m_Name: The Girl
+  m_Name: Sally Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5ac3fbe43ffd4458bd67a9aafbc23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pilot: The Girl
+  pilot: Sally Speed
   maxRacey: 3
   maxSpacey: 1
   maxChasey: 1
@@ -320,7 +320,7 @@ MonoBehaviour:
   currentRacey: 3
   currentSpacey: 1
   currentChasey: 1
-  currentChaseyType: 
+  currentChaseyType: Missile
 --- !u!54 &7364929928316362610
 Rigidbody:
   m_ObjectHideFlags: 0

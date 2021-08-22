@@ -333,7 +333,7 @@ MonoBehaviour:
   currentRacey: 2
   currentSpacey: 1
   currentChasey: 2
-  currentChaseyType: 
+  currentChaseyType: Missile
 --- !u!54 &5611684210065293285
 Rigidbody:
   m_ObjectHideFlags: 0
