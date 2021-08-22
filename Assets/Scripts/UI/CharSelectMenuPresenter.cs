@@ -31,7 +31,8 @@ namespace HackedDesign.UI
         public void NextEvent()
         {
             Debug.Log("Next");
-            GameManager.Instance.SetLevelSelectMenu();
+            //GameManager.Instance.SetLevelSelectMenu();
+            GameManager.Instance.SetPlaying();
 
         }
 
@@ -53,7 +54,7 @@ namespace HackedDesign.UI
 
         public void SelectTMIN8OR()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "T-MIN-8-OR");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "T-MIN-8-OR"));
             Debug.Log("Selected T-MIN-8-OR");
             UpdateSelections();
 
@@ -61,49 +62,49 @@ namespace HackedDesign.UI
 
         public void SelectLeGeneral()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Le General");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Le General"));
             Debug.Log("Selected Le General");
             UpdateSelections();
         }
 
         public void SelectDapper()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Dapper");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Dapper"));
             Debug.Log("Selected Dapper");
             UpdateSelections();
         }
 
         public void SelectRobin()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Robin Williams");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Robin Williams"));
             Debug.Log("Selected Robin");
             UpdateSelections();
         }
 
         public void SelectTheDude()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "The Dude");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "The Dude"));
             Debug.Log("Selected The Dude");
             UpdateSelections();
         }
 
         public void SelectBork()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Bork");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Bork"));
             Debug.Log("Selected Bork");
             UpdateSelections();
         }
 
         public void SelectSirKnee()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Sir Knee");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Sir Knee"));
             Debug.Log("Selected Sir Knee");
             UpdateSelections();
         }
 
         public void SelectCapSparkles()
         {
-            GameManager.Instance.Player.ship = GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Cap Sparkles");
+            GameManager.Instance.Player.SetShip(GameManager.Instance.Ships.FirstOrDefault(s => s.pilot == "Cap Sparkles"));
             Debug.Log("Selected Cap Sparkles");
             UpdateSelections();
 

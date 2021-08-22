@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace HackedDesign
@@ -8,17 +9,21 @@ namespace HackedDesign
         private AbstractController player;
         private UI.AbstractPresenter hudPresenter;
         private UI.CountdownPresenter countdownPresenter;
+        private LineRenderer lineRenderer;
+        private Cinemachine.CinemachineSmoothPath path;
 
         private float countdown = 4;
 
 
         public bool PlayerActionAllowed => true;
 
-        public PlayingState(AbstractController player, UI.AbstractPresenter hudPresenter, UI.CountdownPresenter countdownPresenter)
+        public PlayingState(AbstractController player, LineRenderer lineRenderer, Cinemachine.CinemachineSmoothPath path, UI.AbstractPresenter hudPresenter, UI.CountdownPresenter countdownPresenter)
         {
             this.player = player;
             this.hudPresenter = hudPresenter;
             this.countdownPresenter = countdownPresenter;
+            this.lineRenderer = lineRenderer;
+            this.path = path;
         }
 
         public void Begin()
@@ -26,10 +31,21 @@ namespace HackedDesign
             this.hudPresenter.Show();
             this.countdownPresenter.Show();
             this.countdownPresenter.SetText("Ready!");
-            if(Cursor.visible)
-                Cursor.visible = false;   
+            // if(Cursor.visible)
+            //     Cursor.visible = false;   
 
-            countdown = 4;         
+            countdown = 4;
+
+            float slice = 360 / 6;
+
+            for (int i = 0; i < GameManager.Instance.AI.Count; i++)
+            {
+                //AIController ai = GameManager.Instance.AI[i];
+                GameManager.Instance.AI[i].SetStartPosition((i + 1) * slice);
+            }
+
+            var points = path.m_Waypoints.Select(e => e.position);
+            lineRenderer.SetPositions(points.ToArray());
         }
 
         public void End()
@@ -40,7 +56,7 @@ namespace HackedDesign
 
         public void Update()
         {
-            Cursor.visible = false;
+            //Cursor.visible = false;
             this.hudPresenter.Repaint();
             if(countdown >= 0)
             {

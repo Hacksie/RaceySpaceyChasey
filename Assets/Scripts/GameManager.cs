@@ -18,6 +18,8 @@ namespace HackedDesign
         [SerializeField] private List<Ship> shipPrefabs = null;
         [SerializeField] private List<AIController> ai = null;
         [SerializeField] private List<Color> aiColors = null;
+        [SerializeField] private LineRenderer solarWinds = null;
+        [SerializeField] private Cinemachine.CinemachineSmoothPath levelPath = null;
 
         [Header("UI")]
         [SerializeField] private UI.HudPresenter? hudPanel = null;
@@ -76,7 +78,7 @@ namespace HackedDesign
         public void SetMainMenu() => CurrentState = new MainMenuState(this.menuMusic, this.playMusic, this.mainMenuPanel);
         public void SetCharSelectMenu() => CurrentState = new CharSelectMenuState(this.charSelectMenuPanel);
         public void SetLevelSelectMenu() => CurrentState = new LevelSelectMenuState(this.levelSelectMenuPanel);
-        public void SetPlaying() => CurrentState = new PlayingState(this.player, this.hudPanel, this.countdownPanel);
+        public void SetPlaying() => CurrentState = new PlayingState(this.player, this.solarWinds, this.levelPath, this.hudPanel, this.countdownPanel);
         public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
 
         public void IncLapTimer(float amount)

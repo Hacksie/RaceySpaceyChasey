@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Accelerate",
+                    "name": "Brake",
                     "type": "Button",
                     "id": "23a36286-fb8c-4c8c-af67-bb6c95aaf891",
                     "expectedControlType": "Button",
@@ -408,7 +408,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Accelerate",
+                    "action": "Brake",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
