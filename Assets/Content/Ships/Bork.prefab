@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841102942866159221}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.5, y: 0.3, z: -1.2}
+  m_LocalPosition: {x: 0.5, y: 0.05, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5227279280385444621}
@@ -155,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2785282472166229396}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 0.3, z: -1.2}
+  m_LocalPosition: {x: -0.5, y: 0.05, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5227279280385444621}
@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 5227279280385444621}
   - component: {fileID: 6096240657127680950}
   - component: {fileID: 4719840682645470970}
+  - component: {fileID: 8312010620539546885}
   m_Layer: 0
   m_Name: Bork
   m_TagString: Untagged
@@ -326,10 +327,11 @@ MonoBehaviour:
   maxChasey: 2
   renderTexture: {fileID: 8400000, guid: 35ea4423478edf444bf5a47b06d44b33, type: 2}
   acceleration: 9
-  decceleration: 1.5
-  currentRacey: 1
+  decceleration: 1.75
+  decisionSpeed: 10
+  currentRacey: 2
   currentSpacey: 1
-  currentChasey: 1
+  currentChasey: 2
   currentChaseyType: 
 --- !u!54 &4719840682645470970
 Rigidbody:
@@ -347,6 +349,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8312010620539546885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227279280385444620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016d8e05784dc944eaad59e675538f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5227279278691888043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bb2335c0b42fbc49b2bdfda80094f42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bb2335c0b42fbc49b2bdfda80094f42, type: 3}
       propertyPath: m_LocalPosition.z

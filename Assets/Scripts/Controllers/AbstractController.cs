@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace HackedDesign
@@ -12,7 +14,8 @@ namespace HackedDesign
 
         [Header("Referenced GameObjects")]
         [SerializeField] public Cinemachine.CinemachineDollyCart dollyCart;
-        [SerializeField] private Transform shipModelParent;
+        [SerializeField] public Transform shipModelParent;
+        [SerializeField] public Transform shipModel = null;
 
         [Header("State")]
         [SerializeField] public Ship ship;
@@ -77,18 +80,75 @@ namespace HackedDesign
             }
         }
 
+        public void Collided()
+        {
+            //Debug.Log("Collision!", this);
+            this.currentSpeed = 0;
+            shipModelParent.localPosition = new Vector3(shipModelParent.localPosition.x, 0, shipModelParent.localPosition.z);
+        }
+
         protected void Fire()
         {
             if (ship && ship.currentChasey > 0)
             {
                 ship.currentChasey--;
+                AbstractController target = null;
+                switch(ship.currentChaseyType)
+                {
+                    case "Twin":
+                    target = GetRandomForwardTarget();
+                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
+                    target = GetRandomForwardTarget();
+                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
+                    break;
+                    case "Blue":
+                    target = GetFrontTarget();
+                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target.shipModel.transform, currentSpeed);
+                    break;
+                    case "Mine":
+                    break;
+                    case "Storm":
+                    break;
+                    default:
+                    target = GetRandomForwardTarget();
+                    if(target)
+                        Debug.Log("Targetting " + target.ship.pilot);
+                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target ? target.shipModel.transform : null, currentSpeed);
+                    break;
+                }
             }
         }
 
+        protected AbstractController GetRandomForwardTarget()
+        {
+            List<AbstractController> ships = new List<AbstractController>();
+            ships.Add(GameManager.Instance.Player);
+            ships.AddRange(GameManager.Instance.AI);
+            ships.Remove(this);
+            var filtered = ships.Where(s => s.dollyCart.m_Position >= this.dollyCart.m_Position).ToList();
+
+            Debug.Log("Target count " + filtered.Count);
+
+            return filtered.Count > 0 ? filtered[Random.Range(0, filtered.Count())] : null;
+        }
+
+        protected AbstractController GetFrontTarget()
+        {
+            List<AbstractController> ships = new List<AbstractController>();
+            ships.Add(GameManager.Instance.Player);
+            ships.AddRange(GameManager.Instance.AI);
+            ships.Remove(this);
+            var target = ships.OrderByDescending(s => s.dollyCart.m_Position).FirstOrDefault();
+            
+            return target;
+        }
 
         protected abstract void UpdateShipAcceleration();
         protected abstract void UpdateShipPosition();
         protected abstract void UpdateShipRotation();
         protected abstract void UpdateShipLean();
+
+
+
     }
 }

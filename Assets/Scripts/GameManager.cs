@@ -20,6 +20,7 @@ namespace HackedDesign
         [SerializeField] private List<Color> aiColors = null;
         [SerializeField] private LineRenderer solarWinds = null;
         [SerializeField] private Cinemachine.CinemachineSmoothPath levelPath = null;
+        [SerializeField] private MissilePool missilePool = null;
 
         [Header("UI")]
         [SerializeField] private UI.HudPresenter? hudPanel = null;
@@ -46,10 +47,12 @@ namespace HackedDesign
         public List<AIController> AI { get { return ai; } private set { ai = value; } }
         public List<Ship> Ships { get { return shipPrefabs; } }
         public List<Color> AIColors { get { return aiColors; }}
+        public MissilePool MissilePool { get { return missilePool; }}
         public bool Racing { get { return racing;} private set { racing = value; }}
         public float LapTimer { get { return lapTimer; } private set { lapTimer = value; }}
         public int CurrentLap { get { return currentLap; } private set { currentLap = value; }}
         public int MaxLaps { get { return maxLaps;} private set { maxLaps = value;}}
+
 
         public IState CurrentState
         {

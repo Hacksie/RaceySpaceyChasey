@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623922440128725533}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.4, y: 0.3, z: -1.1}
+  m_LocalPosition: {x: 0.4, y: 0.05, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3742010401679095700}
@@ -155,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922152674125789841}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.4, y: 0.3, z: -1.1}
+  m_LocalPosition: {x: -0.4, y: 0.05, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3742010401679095700}
@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 3742010401679095700}
   - component: {fileID: 1435116572088436381}
   - component: {fileID: 7364929928316362610}
+  - component: {fileID: 866747284860808685}
   m_Layer: 0
   m_Name: The Girl
   m_TagString: Untagged
@@ -312,8 +313,9 @@ MonoBehaviour:
   maxSpacey: 1
   maxChasey: 1
   renderTexture: {fileID: 8400000, guid: ba01d8e83b6542d498ad3cafa0a3aa80, type: 2}
-  acceleration: 12
-  decceleration: 3
+  acceleration: 13
+  decceleration: 2.75
+  decisionSpeed: 10
   currentRacey: 3
   currentSpacey: 1
   currentChasey: 1
@@ -334,6 +336,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &866747284860808685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742010401679095701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016d8e05784dc944eaad59e675538f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &7204165286839265691
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -364,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4260f81c7e8e1684c9cef796f4624625, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4260f81c7e8e1684c9cef796f4624625, type: 3}
       propertyPath: m_LocalPosition.z

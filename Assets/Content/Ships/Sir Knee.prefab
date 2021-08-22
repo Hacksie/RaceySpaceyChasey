@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 258134751146457989}
   - component: {fileID: 3591004566807645984}
   - component: {fileID: 1900664843025171966}
+  - component: {fileID: 5268665983281602552}
   m_Layer: 0
   m_Name: Sir Knee
   m_TagString: Untagged
@@ -53,10 +54,11 @@ MonoBehaviour:
   maxChasey: 3
   renderTexture: {fileID: 8400000, guid: e8bd84ef1d12fc94080e277efcc4642f, type: 2}
   acceleration: 8
-  decceleration: 1
+  decceleration: 1.5
+  decisionSpeed: 10
   currentRacey: 1
   currentSpacey: 1
-  currentChasey: 1
+  currentChasey: 3
   currentChaseyType: 
 --- !u!54 &1900664843025171966
 Rigidbody:
@@ -74,6 +76,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5268665983281602552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258134751146457990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016d8e05784dc944eaad59e675538f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1979820350397621334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234203307421772418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.3, z: -1.3}
+  m_LocalPosition: {x: 0.4, y: 0.05, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 258134751146457989}
@@ -242,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9042087323321464839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.3, z: -1.3}
+  m_LocalPosition: {x: -0.4, y: 0.05, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 258134751146457989}
@@ -364,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38d4898bc316d9c4ba935b9c214dc6c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38d4898bc316d9c4ba935b9c214dc6c4, type: 3}
       propertyPath: m_LocalPosition.z

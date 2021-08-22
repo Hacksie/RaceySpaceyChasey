@@ -9,12 +9,19 @@ namespace HackedDesign
     {
         [Header("Referenced GameObjects")]
         [SerializeField] public Transform shipParent = null;
-        [SerializeField] public Transform shipModel = null;
+        //[SerializeField] public Transform shipModel = null;
+        [Header("Settings")]
+        [SerializeField] private float decisionSpeed = 10;
+
+        [SerializeField] float currentVert = 0;
+        [SerializeField] float targetVert = 0;
+        float decisionCooldown = 0;
 
         public void SetStartPosition(float angle)
         {
-            shipModel.localPosition = new Vector3(shipModel.localPosition.x, Random.Range(-3, - 6), shipModel.localPosition.z);
-            // FIXME: Carve up the starting space into a pie and give each AI it's own space
+            currentVert = Random.Range(-3, -5.5f);
+            targetVert = Random.Range(-3, -5.5f);
+            shipModel.localPosition = new Vector3(shipModel.localPosition.x, Random.Range(-3, -5.5f), shipModel.localPosition.z);
             shipParent.Rotate(0, 0, angle, Space.Self);
         }
 
@@ -25,7 +32,11 @@ namespace HackedDesign
 
         protected override void UpdateShipPosition()
         {
-
+            if (ship)
+            {
+                currentVert = Mathf.Lerp(currentVert, targetVert, Time.deltaTime / ship.decisionSpeed);
+            }
+            shipModel.localPosition = new Vector3(shipModel.localPosition.x, Mathf.Clamp(currentVert, -6, 6), shipModel.localPosition.z);
         }
 
         protected override void UpdateShipRotation()
@@ -37,6 +48,14 @@ namespace HackedDesign
         {
             if (ship)
             {
+                if (decisionCooldown >= (ship.decisionSpeed))
+                {
+                    decisionCooldown = 0 - Random.Range(0, 5); // Break up the decisions
+                    targetVert = Random.Range(-3, -5.5f);
+                }
+
+                decisionCooldown += Time.deltaTime;
+
                 if (this.currentSpeed <= this.maxSpeed)
                 {
                     this.currentSpeed += ship.acceleration * Time.deltaTime;

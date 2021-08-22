@@ -24,7 +24,7 @@ namespace HackedDesign
         [SerializeField] private Transform aimTarget = null;
         [SerializeField] private Camera mainCamera = null;
         [SerializeField] public Transform playerModel = null;
-        [SerializeField] public Transform shipModel = null;
+        
 
         // [Header("Settings")]
 
@@ -86,12 +86,10 @@ namespace HackedDesign
         public void FireEvent(InputAction.CallbackContext context)
         {
 
-            if (!GameManager.Instance.CurrentState.PlayerActionAllowed)
+            if (!GameManager.Instance.CurrentState.PlayerActionAllowed && !GameManager.Instance.Racing)
             {
                 return;
             }
-            Debug.Log("Fire");
-
             if (context.performed)
             {
                 Fire();
