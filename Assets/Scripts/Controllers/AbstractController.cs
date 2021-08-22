@@ -111,7 +111,7 @@ namespace HackedDesign
             {
                 if(missileSound)
                     missileSound.Play();
-                //FIXME: Remove this on test complete
+                
                 ship.currentChasey--;
                 lastBoostTime = Time.time;
                 AbstractController target = null;
@@ -133,6 +133,7 @@ namespace HackedDesign
                         break;
                     case "Mine":
                         Debug.Log("Firing mine");
+                        GameManager.Instance.MissilePool.Mine(shipModelParent.transform.position + (shipModelParent.transform.forward * -2f), ship.pilot);
                         ship.currentChaseyType = "Missile";
                         break;
                     case "Storm":
@@ -181,6 +182,15 @@ namespace HackedDesign
             //Debug.Log("Collision!", this);
             this.currentSpeed = 0;
             shipModelParent.localPosition = new Vector3(shipModelParent.localPosition.x, 0, shipModelParent.localPosition.z);
+        }
+
+        protected int CountTargetsAhead()
+        {
+            List<AbstractController> ships = new List<AbstractController>();
+            ships.Add(GameManager.Instance.Player);
+            ships.AddRange(GameManager.Instance.AI);
+
+            return ships.IndexOf(this);
         }
 
         protected AbstractController GetRandomForwardTarget()

@@ -76,6 +76,13 @@ namespace HackedDesign
                 decisionCooldown = 0 - Random.Range(0, 5); // Break up the decisions
                 targetVert = Random.Range(-3, -5.5f);
 
+                if(Random.Range(0, 1.0f) < (ship.aggressionChance * ship.currentRacey))
+                {
+                    //Debug.Log("Count targets ahead:" + CountTargetsAhead());
+                    //Debug.Log("AI chose to boost");
+                    Boost(false);
+                }
+
                 // Fire a missile!
                 if (!GameManager.Instance.PassiveAI)
                 {
