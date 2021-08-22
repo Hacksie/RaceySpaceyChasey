@@ -11,7 +11,7 @@ namespace HackedDesign
 
             if(controller)
             {
-                Debug.Log("boost! " + controller.gameObject.name);
+                //Debug.Log("boost! " + controller.gameObject.name);
                 controller.Boost(true);
             }
 

@@ -12,6 +12,7 @@ namespace HackedDesign
         //[SerializeField] public Transform shipModel = null;
         [Header("Settings")]
         [SerializeField] private float decisionSpeed = 10;
+        [SerializeField] private LayerMask layerMask;
 
         [SerializeField] float currentVert = 0;
         [SerializeField] float targetVert = 0;
@@ -37,6 +38,18 @@ namespace HackedDesign
                 currentVert = Mathf.Lerp(currentVert, targetVert, Time.deltaTime / ship.decisionSpeed);
             }
             shipModel.localPosition = new Vector3(shipModel.localPosition.x, Mathf.Clamp(currentVert, -6, 6), shipModel.localPosition.z);
+
+            // Dumb avoidance. move toward the center track
+            if (Physics.Raycast(shipModel.transform.position, shipModel.transform.forward, 20.0f, layerMask, QueryTriggerInteraction.Ignore))
+            {
+                //Debug.Log("Avoiding shit", this);
+                if (targetVert < 0)
+                    targetVert += 1;
+
+                if (targetVert > 0)
+                    targetVert -= 1;
+            }
+
         }
 
         protected override void UpdateShipRotation()

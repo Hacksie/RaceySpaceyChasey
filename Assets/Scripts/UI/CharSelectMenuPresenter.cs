@@ -17,15 +17,16 @@ namespace HackedDesign.UI
         [SerializeField] private UnityEngine.UI.Text borkSelectedText;
         [SerializeField] private UnityEngine.UI.Text sirkneeSelectedText;
         [SerializeField] private UnityEngine.UI.Text capsparklesSelectedText;
+        [SerializeField] private UnityEngine.UI.Button nextButton;
 
         public override void Repaint()
         {
+           nextButton.interactable = GameManager.Instance.Player.ship != null;
         }
 
         public void PopulateValues()
         {
-            // sfxSlider.value = GameManager.Instance.PlayerPreferences.sfxVolume;
-            // musicSlider.value = GameManager.Instance.PlayerPreferences.musicVolume;
+
         }
 
         public void NextEvent()
@@ -120,6 +121,8 @@ namespace HackedDesign.UI
             {
                 SetSelectedText(GameManager.Instance.AI[i].ship.pilot, "AI " + i, GameManager.Instance.AIColors[i]);
             }
+            nextButton.interactable = GameManager.Instance.Player.ship != null;
+
 
         }
 

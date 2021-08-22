@@ -36,6 +36,7 @@ namespace HackedDesign
             if (!Cursor.visible)
                 Cursor.visible = true;
             this.menuPresenter.Show();
+            this.menuPresenter.Repaint();
             //this.hudPresenter.Show();
         }
 

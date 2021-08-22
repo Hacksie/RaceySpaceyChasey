@@ -411,6 +411,7 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 27774249}
   shipModelParent: {fileID: 0}
+  shipModel: {fileID: 0}
   ship: {fileID: 0}
 --- !u!4 &27774251
 Transform:
@@ -7501,10 +7502,13 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 771402483}
   shipModelParent: {fileID: 507382933}
+  shipModel: {fileID: 507382933}
   ship: {fileID: 0}
   shipParent: {fileID: 911391377}
-  shipModel: {fileID: 507382933}
   decisionSpeed: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   currentVert: 0
   targetVert: 0
 --- !u!1 &774216685
@@ -8442,6 +8446,7 @@ MonoBehaviour:
   borkSelectedText: {fileID: 774216688}
   sirkneeSelectedText: {fileID: 503300234}
   capsparklesSelectedText: {fileID: 81040522}
+  nextButton: {fileID: 1290574481}
 --- !u!1001 &868160296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9374,10 +9379,13 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 920739377}
   shipModelParent: {fileID: 1279102972}
+  shipModel: {fileID: 1279102972}
   ship: {fileID: 0}
   shipParent: {fileID: 303895236}
-  shipModel: {fileID: 1279102972}
   decisionSpeed: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   currentVert: 0
   targetVert: 0
 --- !u!1 &943900554
@@ -14391,10 +14399,13 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 1392272791}
   shipModelParent: {fileID: 1108095504}
+  shipModel: {fileID: 1108095504}
   ship: {fileID: 0}
   shipParent: {fileID: 510312217}
-  shipModel: {fileID: 1108095504}
   decisionSpeed: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   currentVert: 0
   targetVert: 0
 --- !u!1 &1392840277
@@ -19577,10 +19588,13 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 1849394531}
   shipModelParent: {fileID: 1396421693}
+  shipModel: {fileID: 1396421693}
   ship: {fileID: 0}
   shipParent: {fileID: 1340763246}
-  shipModel: {fileID: 1396421693}
   decisionSpeed: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   currentVert: 0
   targetVert: 0
 --- !u!1 &1856376537
@@ -20144,7 +20158,8 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 1896021146}
   shipModelParent: {fileID: 536505212}
-  ship: {fileID: 1982080557}
+  shipModel: {fileID: 536505212}
+  ship: {fileID: 0}
   movementSpeed: 10
   rotateSpeed: 340
   leanAngle: 80
@@ -20159,7 +20174,6 @@ MonoBehaviour:
   aimTarget: {fileID: 0}
   mainCamera: {fileID: 0}
   playerModel: {fileID: 667959600}
-  shipModel: {fileID: 536505212}
 --- !u!114 &1896021145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21047,17 +21061,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974667763}
   m_CullTransparentMesh: 1
---- !u!114 &1982080557 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1435116572088436381, guid: ff6998787d01d584f9358f56703e2adb, type: 3}
-  m_PrefabInstance: {fileID: 3742010401044658817}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc5ac3fbe43ffd4458bd67a9aafbc23b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1982765457
 GameObject:
   m_ObjectHideFlags: 0
@@ -23472,10 +23475,13 @@ MonoBehaviour:
   currentSpeed: 0
   dollyCart: {fileID: 2142294090}
   shipModelParent: {fileID: 2045615117}
+  shipModel: {fileID: 2045615117}
   ship: {fileID: 0}
   shipParent: {fileID: 334578833}
-  shipModel: {fileID: 2045615117}
   decisionSpeed: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   currentVert: 0
   targetVert: 0
 --- !u!1 &2146974779

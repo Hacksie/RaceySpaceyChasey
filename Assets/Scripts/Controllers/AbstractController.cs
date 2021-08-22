@@ -113,7 +113,7 @@ namespace HackedDesign
                     target = GetRandomForwardTarget();
                     if(target)
                         Debug.Log("Targetting " + target.ship.pilot);
-                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 5f), shipModelParent.transform.forward, target ? target.shipModel.transform : null, currentSpeed);
+                    GameManager.Instance.MissilePool.Fire(shipModelParent.transform.position + (shipModelParent.transform.forward * 7f), shipModelParent.transform.forward, target ? target.shipModel.transform : null, currentSpeed);
                     break;
                 }
             }
