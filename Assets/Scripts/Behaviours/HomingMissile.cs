@@ -12,6 +12,7 @@ namespace HackedDesign
 
         public bool fired = false;
         private float currentSpeed = 0;
+        private string pilot = "";
 
         private Rigidbody rb;
 
@@ -46,12 +47,13 @@ namespace HackedDesign
 
         }
 
-        public void Fire(Transform target, float baseSpeed)
+        public void Fire(Transform target, float baseSpeed, string pilot)
         {
             Debug.Log("missile fired");
             this.fired = true;
             this.currentSpeed = speed + baseSpeed;
             this.target = target;
+            this.pilot = pilot;
             timer = timeout;
         }
 
@@ -78,10 +80,13 @@ namespace HackedDesign
 
             if (controller)
             {
-                controller.Collided();
-                Reset();
+                if (controller.ship.pilot != this.pilot)
+                {
+                    controller.Collided();
+                    Reset();
+                }
             }
-            else if(!collision.collider.isTrigger)
+            else if (!collision.collider.isTrigger)
             {
                 Reset();
                 Debug.Log("Missile hit something else");

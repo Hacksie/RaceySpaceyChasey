@@ -9,7 +9,7 @@ namespace HackedDesign
         [SerializeField] private HomingMissile missilePrefab;
         [SerializeField] List<HomingMissile> missileList;
 
-        public void Fire(Vector3 position, Vector3 forward, Transform target, float baseSpeed)
+        public void Fire(Vector3 position, Vector3 forward, Transform target, float baseSpeed, string pilot)
         {
             var missile =  missileList.FirstOrDefault(m => !m.fired);
 
@@ -26,7 +26,7 @@ namespace HackedDesign
             Debug.Log("Fire missile!");
             missile.Reset();
             missile.gameObject.SetActive(true);
-            missile.Fire(target, baseSpeed);
+            missile.Fire(target, baseSpeed, pilot);
             
         }
     }
