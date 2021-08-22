@@ -44,7 +44,10 @@ namespace HackedDesign
                 GameManager.Instance.AI[i].SetStartPosition((i + 1) * slice);
             }
 
+            
+
             var points = path.m_Waypoints.Select(e => e.position);
+            lineRenderer.positionCount = points.Count();
             lineRenderer.SetPositions(points.ToArray());
         }
 
