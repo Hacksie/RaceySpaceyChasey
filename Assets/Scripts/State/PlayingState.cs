@@ -32,28 +32,26 @@ namespace HackedDesign
                 GameManager.Instance.MenuMusic.Stop();
 
             this.hudPresenter.Show();
-            this.countdownPresenter.Show();
-            this.countdownPresenter.SetText("Ready!");
             // if(Cursor.visible)
             //     Cursor.visible = false;   
 
-            countdown = 4;
-
-            float slice = 360 / 6;
-
-            for (int i = 0; i < GameManager.Instance.AI.Count; i++)
+            if (!GameManager.Instance.Racing)
             {
-                //AIController ai = GameManager.Instance.AI[i];
-                GameManager.Instance.AI[i].SetStartPosition((i + 1) * slice);
+                this.countdownPresenter.Show();
+                this.countdownPresenter.SetText("Ready!");
+                countdown = 4;
+
+                float slice = 360 / 6;
+
+                for (int i = 0; i < GameManager.Instance.AI.Count; i++)
+                {
+                    GameManager.Instance.AI[i].SetStartPosition((i + 1) * slice);
+                }
+
+                var points = path.m_Waypoints.Select(e => e.position);
+                lineRenderer.positionCount = points.Count();
+                lineRenderer.SetPositions(points.ToArray());
             }
-
-
-
-            var points = path.m_Waypoints.Select(e => e.position);
-            lineRenderer.positionCount = points.Count();
-            lineRenderer.SetPositions(points.ToArray());
-
-
         }
 
         public void End()

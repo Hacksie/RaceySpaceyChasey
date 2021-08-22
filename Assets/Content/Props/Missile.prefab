@@ -82,7 +82,7 @@ MonoBehaviour:
   target: {fileID: 0}
   timeout: 30
   speed: 15
-  turnSpeed: 20
+  turnSpeed: 50
   fired: 0
 --- !u!1 &4599825716794668006
 GameObject:
