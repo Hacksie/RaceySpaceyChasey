@@ -31,6 +31,7 @@ namespace HackedDesign
         [SerializeField] private UI.PauseMenuPresenter? pauseMenuPanel = null;
         [SerializeField] private UI.CountdownPresenter? countdownPanel = null;
         [SerializeField] private UI.GameOverMenuPresenter? gameOverMenuPanel = null;
+        [SerializeField] private UI.OptionsMenuPresenter? optionsMenuPanel = null;
 
         [Header("State")]
         [SerializeField] private bool racing = false;
@@ -89,6 +90,7 @@ namespace HackedDesign
         public void SetPlaying() => CurrentState = new PlayingState(this.player, this.solarWinds, this.levelPath, this.hudPanel, this.countdownPanel);
         public void SetPaused() => CurrentState = new PauseState(this.pauseMenuPanel);
         public void SetGameOver() => CurrentState = new GameOverState(this.gameOverMenuPanel);
+        public void SetOptions() => CurrentState = new OptionsState(this.optionsMenuPanel);
 
         public void IncLapTimer(float amount)
         {
@@ -168,6 +170,7 @@ namespace HackedDesign
             this.pauseMenuPanel?.Hide();
             this.countdownPanel?.Hide();
             this.gameOverMenuPanel?.Hide();
+            this.optionsMenuPanel?.Hide();
         }
     }
 }

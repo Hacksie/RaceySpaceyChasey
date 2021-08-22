@@ -40,7 +40,7 @@ namespace HackedDesign
                 GameObject.DestroyImmediate(shipModelParent.transform.GetChild(i).gameObject);
             }
 
-            var go = GameObject.Instantiate(shipPrefab, shipModelParent.transform.position, Quaternion.identity, shipModelParent);
+            var go = GameObject.Instantiate(shipPrefab, shipModelParent.transform.position, shipModelParent.transform.rotation, shipModelParent);
             var newShip = go.GetComponent<Ship>();
             this.ship = newShip;
             this.ship.Reset();

@@ -20,10 +20,15 @@ namespace HackedDesign
 
         public void SetStartPosition(float angle)
         {
-            currentVert = Random.Range(-3, -5.5f);
-            targetVert = Random.Range(-3, -5.5f);
+            currentVert = Random.Range(-3.5f, -5.5f);
+            targetVert = Random.Range(-3.5f, -5.5f);
+            //shipModel.localPosition = Vector3.zero;
             shipModel.localPosition = new Vector3(shipModel.localPosition.x, Random.Range(-3, -5.5f), shipModel.localPosition.z);
-            shipParent.Rotate(0, 0, angle, Space.Self);
+            //shipParent.rotation = Quaternion.identity;
+            shipParent.rotation = Quaternion.Euler(0,0,angle);
+            //shipParent.Rotate(0, 0, angle, Space.Self);
+            //shipModel.up = shipParent.position - shipModel.position;
+            //shipParent.up = Vector3.zero;
         }
 
         protected override void UpdateShipLean()

@@ -6,16 +6,12 @@ namespace HackedDesign.UI
 {
     public class MainMenuPresenter : AbstractPresenter
     {
-
-        [SerializeField] private AudioMixer masterMixer = null;
-
-
         [Header("Options")]
-        [SerializeField] private UnityEngine.UI.Slider sfxSlider = null;
-        [SerializeField] private UnityEngine.UI.Slider musicSlider = null;
+        [SerializeField] private UnityEngine.UI.Button quitButton;
 
         public override void Repaint()
         {
+            quitButton.interactable = Application.platform != RuntimePlatform.WebGLPlayer;
         }
 
         public void PopulateValues()
@@ -33,6 +29,7 @@ namespace HackedDesign.UI
         public void OptionsEvent()
         {
             Debug.Log("Options");
+            GameManager.Instance.SetOptions();
         }
 
         public void QuitEvent()
